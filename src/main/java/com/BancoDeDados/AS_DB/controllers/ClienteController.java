@@ -35,8 +35,8 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente clienteRequest) {
-        Cliente cliente = this.clienteService.criarCarro(clienteRequest);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+        Cliente cliente = this.clienteService.criarCliente(clienteRequest);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id_cliente}")
                 .buildAndExpand(cliente.getId_cliente()).toUri();
 
         return ResponseEntity

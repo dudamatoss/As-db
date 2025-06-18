@@ -24,7 +24,7 @@ public class ClienteService {
         return this.clienteRepository.findById(id).orElseThrow();
     }
 
-    public Cliente criarCarro (Cliente clienteRequest){
+    public Cliente criarCliente (Cliente clienteRequest){
         return this.clienteRepository.save(clienteRequest);
     }
 
