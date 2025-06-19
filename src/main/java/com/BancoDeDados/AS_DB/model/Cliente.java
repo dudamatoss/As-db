@@ -1,11 +1,9 @@
 package com.BancoDeDados.AS_DB.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Clientes")
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

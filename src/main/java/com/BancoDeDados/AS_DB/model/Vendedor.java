@@ -1,19 +1,22 @@
 package com.BancoDeDados.AS_DB.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
+@Table(name = "Vendedores")
 public class Vendedor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_vendedor;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_vendedor", nullable = false, unique = true)
+    private Integer id_vendedor;
     private String nome;
     private String cpf;
     private String telefone;
     private String email;
+    @OneToMany(mappedBy = "vendedor")
+    private List<Vendas> vendas;
 
     public Vendedor() {}
 
@@ -64,5 +67,13 @@ public class Vendedor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Vendas> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<Vendas> vendas) {
+        this.vendas = vendas;
     }
 }

@@ -1,26 +1,27 @@
 package com.BancoDeDados.AS_DB.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Carros")
 public class Carro {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_carro", nullable = false)
+    private Integer id_carro;
+
     private String modelo;
     private String marca;
     private int ano;
     private String status;
-    private  double preco;
+    private double preco;
     private String placa;
 
     public Carro() {}
 
     public Carro(int id, String modelo, String marca, int ano, String status, double preco, String placa) {
-        this.id = id;
+        this.id_carro = id;
         this.modelo = modelo;
         this.marca = marca;
         this.ano = ano;
@@ -30,11 +31,11 @@ public class Carro {
     }
 
     public int getId() {
-        return id;
+        return id_carro;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id_carro = id;
     }
 
     public String getModelo() {
