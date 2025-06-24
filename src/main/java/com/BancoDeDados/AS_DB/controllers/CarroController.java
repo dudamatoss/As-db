@@ -1,6 +1,7 @@
 package com.BancoDeDados.AS_DB.controllers;
 
 import com.BancoDeDados.AS_DB.model.Carro;
+import com.BancoDeDados.AS_DB.model.Cliente;
 import com.BancoDeDados.AS_DB.services.CarroService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,26 +26,34 @@ public class CarroController {
                 .body(this.carroService.listarTodosCarros());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Carro> listarPorId (@PathVariable int id) {
+    @GetMapping("/{id_carro}")
+    public ResponseEntity<Carro> listarPorId (@PathVariable int id_carro) {
         return ResponseEntity
-                .ok(this.carroService.listarPorId(id));
+                .ok(this.carroService.listarPorId(id_carro));
     }
 
     @PostMapping
     public ResponseEntity<Carro> criarCarro(@RequestBody Carro carroRequest) {
         Carro carro = this.carroService.criarCarro(carroRequest);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(carro.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id_carro}")
+                .buildAndExpand(carro.getId_carro()).toUri();
 
         return ResponseEntity
                 .created(uri)
                 .body(carro);
     }
+    @PutMapping("/{id_carro}")
+    public ResponseEntity<Carro> updateCarro(@PathVariable int id_carro, @RequestBody Carro carroAtualizado) {
+        this.carroService.updateCarro(id_carro, carroAtualizado);
+        return ResponseEntity
+                .ok()
+                .build();
+    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCarro(@PathVariable int id) {
-        this.carroService.deleteCarro(id);
+
+    @DeleteMapping("/{id_carro}")
+    public ResponseEntity<Void> deleteCarro(@PathVariable int id_carro) {
+        this.carroService.deleteCarro(id_carro);
         return  ResponseEntity
                 .ok()
                 .build();

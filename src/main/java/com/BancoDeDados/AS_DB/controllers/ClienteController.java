@@ -43,6 +43,13 @@ public class ClienteController {
                 .created(uri)
                 .body(cliente);
     }
+    @PutMapping("/{id_cliente}")
+    public ResponseEntity<Cliente> updateCliente(@PathVariable int id_cliente, @RequestBody Cliente clienteAtualizado) {
+        this.clienteService.updateCliente(id_cliente, clienteAtualizado);
+        return ResponseEntity
+                .ok()
+                .build();
+    }
 
     @DeleteMapping("/{id_cliente}")
     public ResponseEntity<Void> deleteCliente(@PathVariable int id_cliente) {

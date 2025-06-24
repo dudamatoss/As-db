@@ -30,12 +30,12 @@ public class Carro {
         this.placa = placa;
     }
 
-    public int getId() {
+    public Integer getId_carro() {
         return id_carro;
     }
 
-    public void setId(int id) {
-        this.id_carro = id;
+    public void setId_carro(Integer id_carro) {
+        this.id_carro = id_carro;
     }
 
     public String getModelo() {

@@ -30,7 +30,11 @@ public class VendedorService {
 
     public void updateVendedor(int id_vendedor, Vendedor vendedorRequest){
         Vendedor vendedor = this.vendedorRepository.getReferenceById(id_vendedor);
+
+        vendedor.setNome(vendedorRequest.getNome());
         vendedor.setCpf(vendedorRequest.getCpf());
+        vendedor.setTelefone(vendedorRequest.getTelefone());
+        vendedor.setEmail(vendedorRequest.getEmail());
 
         this.vendedorRepository.save(vendedor);
     }

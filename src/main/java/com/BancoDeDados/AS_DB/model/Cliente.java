@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id_cliente;
+    private Integer id_cliente;
     private String nome;
     private String cpf;
     private String telefone;
@@ -26,7 +26,7 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getId_cliente() {
+    public Integer getId_cliente() {
         return id_cliente;
     }
 

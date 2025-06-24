@@ -31,7 +31,14 @@ public class CarroService {
 //    }
     public void updateCarro(int id, Carro carroRequest){
         Carro carro = this.carroRepository.getReferenceById(id);
+
         carro.setModelo(carroRequest.getModelo());
+        carro.setAno(carroRequest.getAno());
+        carro.setMarca(carroRequest.getMarca());
+        carro.setPlaca(carroRequest.getPlaca());
+        carro.setPreco(carroRequest.getPreco());
+        carro.setStatus(carroRequest.getStatus());
+
 
         this.carroRepository.save(carro);
     }

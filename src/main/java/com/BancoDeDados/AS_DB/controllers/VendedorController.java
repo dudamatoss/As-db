@@ -1,5 +1,6 @@
 package com.BancoDeDados.AS_DB.controllers;
 
+import com.BancoDeDados.AS_DB.model.Cliente;
 import com.BancoDeDados.AS_DB.model.Vendedor;
 import com.BancoDeDados.AS_DB.services.VendedorService;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,13 @@ public class VendedorController {
         return ResponseEntity
                 .created(uri)
                 .body(cliente);
+    }
+    @PutMapping("/{id_vendedor}")
+    public ResponseEntity<Vendedor> updateVendedor(@PathVariable int id_vendedor, @RequestBody Vendedor vendedorAtualizado) {
+        this.vendedorService.updateVendedor(id_vendedor, vendedorAtualizado);
+        return ResponseEntity
+                .ok()
+                .build();
     }
 
     @DeleteMapping("/{id_vendedor}")

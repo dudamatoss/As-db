@@ -1,5 +1,6 @@
 package com.BancoDeDados.AS_DB.controllers;
 
+import com.BancoDeDados.AS_DB.model.Carro;
 import com.BancoDeDados.AS_DB.model.Vendas;
 import com.BancoDeDados.AS_DB.services.VendaService;
 
@@ -10,7 +11,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-@Service
+@RestController
+@RequestMapping("/vendas")
+
 public class VendaController {
 
     private VendaService vendaService;
@@ -41,6 +44,14 @@ public class VendaController {
         return ResponseEntity
                 .created(uri)
                 .body(cliente);
+    }
+
+    @PutMapping("/{id_venda}")
+    public ResponseEntity<Vendas> updateVendas(@PathVariable int id_venda, @RequestBody Vendas vendaAtualizada) {
+        this.vendaService.updateVendas(id_venda, vendaAtualizada);
+        return ResponseEntity
+                .ok()
+                .build();
     }
 
     @DeleteMapping("/{id_venda}")

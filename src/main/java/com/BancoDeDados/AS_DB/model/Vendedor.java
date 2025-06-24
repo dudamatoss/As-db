@@ -29,11 +29,11 @@ public class Vendedor {
         this.email = email;
     }
 
-    public int getId_vendedor() {
+    public Integer getId_vendedor() {
         return id_vendedor;
     }
 
-    public void setId_vendedor(int id_vendedor) {
+    public void setId_vendedor(Integer id_vendedor) {
         this.id_vendedor = id_vendedor;
     }
 

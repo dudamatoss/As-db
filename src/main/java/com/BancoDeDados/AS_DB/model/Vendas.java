@@ -7,16 +7,15 @@ import java.util.List;
 @Entity
 @Table(name = "Vendas")
 public class Vendas {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_venda", nullable = false, unique = true)
     private Integer id_venda;
 
-
     @OneToOne
     @JoinColumn(name = "id_carro", referencedColumnName = "id_carro")
     private Carro carro;
-
 
     @OneToOne
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
@@ -26,36 +25,49 @@ public class Vendas {
     @JoinColumn(name = "id_vendedor", referencedColumnName = "id_vendedor")
     private Vendedor vendedor;
 
-    public Vendas() {}
+    private Double valorFinal;
 
-    public Vendas(int id_venda,Carro id_carro, Cliente id_cliente) {
-        this.id_venda = id_venda;
-        this.carro = carro;
-        this.cliente = cliente;
-
+    public Vendas() {
     }
 
-    public int getId_venda() {
+    // Construtor com todos os campos (menos id_venda, que é auto-gerado)
+    public Vendas(Carro carro, Cliente cliente, Vendedor vendedor, double valorFinal) {
+        this.carro = carro;
+        this.cliente = cliente;
+        this.vendedor = vendedor;
+        this.valorFinal = valorFinal;
+    }
+
+    public Double getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(double valorFinal) {
+        this.valorFinal = valorFinal;
+    }
+
+    // Getters e setters
+    public Integer getId_venda() {
         return id_venda;
     }
 
-    public void setId_venda(int id_venda) {
+    public void setId_venda(Integer id_venda) {
         this.id_venda = id_venda;
     }
 
-    public Carro getId_carro() {
+    public Carro getCarro() {
         return carro;
     }
 
-    public void setId_carro(Carro carro) {
+    public void setCarro(Carro carro) {
         this.carro = carro;
     }
 
-    public Cliente getId_cliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setId_cliente(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 

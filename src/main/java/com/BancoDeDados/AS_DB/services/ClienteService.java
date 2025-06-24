@@ -30,7 +30,12 @@ public class ClienteService {
 
     public void updateCliente(int id_cliente, Cliente clienteRequest){
         Cliente cliente = this.clienteRepository.getReferenceById(id_cliente);
+        cliente.setNome(clienteRequest.getNome());
         cliente.setCpf(clienteRequest.getCpf());
+        cliente.setTelefone(clienteRequest.getTelefone());
+        cliente.setEmail(clienteRequest.getEmail());
+        cliente.setEndereco(clienteRequest.getEndereco());
+
 
         this.clienteRepository.save(cliente);
     }
